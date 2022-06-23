@@ -3,6 +3,7 @@ from PIL import Image
 import os
 from django.conf import settings
 
+
 # Create your models here.
 
 
@@ -25,7 +26,6 @@ class Produto(models.Model):
         print(img.name)
 
         width2 = original_width
-        height2 = original_height
 
         if original_height > original_width:
             original_width = original_height
@@ -50,6 +50,23 @@ class Produto(models.Model):
         if self.imagem:
             self.resize_image(self.imagem, max_image_size)
 
-
     def __str__(self):
         return self.nome
+
+
+class Variacao(models.Model):
+    produto = models.ForeignKey(Produto, on_delete=models.CASCADE)
+    nome = models.CharField(max_length=255, blank=True, null=True)
+    preco = models.FloatField()
+    preco_promocional = models.FloatField(default=0)
+    estoque = models.PositiveIntegerField(default=1)
+
+    def __str__(self):
+        return self.nome or self.produto.nome
+
+
+    class Meta:
+        verbose_name = 'Variação'
+        verbose_name_plural = 'Variações'
+
+
