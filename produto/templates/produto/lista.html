@@ -1,5 +1,7 @@
 {% extends 'static/base.html' %}
 
+
+
 {% block conteudo %}
 
 {% for produto in produtos %}
@@ -18,26 +20,28 @@
 
                                 {% if produto.preco_marketing_promocional %}
                                 <span class="product-price">
-                                    {{ produto.preco_marketing_promocional }}
+                                    R$ {{ produto.preco_marketing_promocional|floatformat:2 }}
                                 </span>
 
                                 <span class="product-old-price text-muted">
-                                    {{ produdo.preco_marketing}}
+                                    R$ {{ produto.preco_marketing |floatformat:2 }}
                                 </span>
                                 {% else %}
                                 <span class="product-price">
-                                    {{ produto.preco_marketing }}
+                                    R$ {{ produto.preco_marketing|floatformat:2 }}
                                 </span>
                                 {% endif %}
             </div>
         </div>
         <div class="card-footer bg-transparent border-top-light-custom text-center">
-            <a href="post.html" class="btn btn-primary btn-sm m-1 btn-block">
+            <a href="{{ produto.slug }}" class="btn btn-primary btn-sm m-1 btn-block">
                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
                 Comprar
             </a>
         </div>
 </div>
 {% endfor %}
+
+
 
 {% endblock %}
