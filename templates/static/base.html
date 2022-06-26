@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    {% include 'parciais/_head.html' %}
+
+    <title>{% block titulo %} {% endblock %}Hello, world!</title>
+</head>
+
+<body>
+<nav class="navbar navbar-dark bg-primary navbar-expand-lg">
+    {% include 'parciais/_nav.html' %}
+</nav>
+
+<main class="container mt-4 mb-4">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="card-columns">
+
+
+            {% block conteudo %} {% endblock %}
+
+            </div>
+        </div>
+    </div>
+</main>
+
+{% include 'parciais/_footer.html' %}
+
+</body>
+
+</html>

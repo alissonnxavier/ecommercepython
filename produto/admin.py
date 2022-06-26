@@ -2,6 +2,7 @@ from django.contrib import admin
 from . import models
 
 
+
 # Register your models here.
 # aqui voce define o que sera visto na tela de administraçao
 
